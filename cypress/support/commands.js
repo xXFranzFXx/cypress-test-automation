@@ -10,11 +10,10 @@
 //
 //
 // -- This is a parent command --
-Cypress.Commands.add('checkToken', () => {
-    cy.window().its('localStorage').should("have.a.property", "api-token")
-})
+
 Cypress.Commands.add('loginWithValidCredentials', (email, password) => { 
-    cy.visit('https://qa.koel.app')
+    cy.visit('/');
+
     cy.get("[type='email']")
       .type(email, { force: true })
       .type("{enter}");
@@ -23,14 +22,16 @@ Cypress.Commands.add('loginWithValidCredentials', (email, password) => {
       .type(password, { force: true })
       .type("{enter}");
 
-    cy.get("button[type='submit']").click()
-    cy.checkToken()
-   
- 
+    cy.get("button[type='submit']").click();
+    cy.checkToken();
+
 });
 //
 //
 // -- This is a child command --
+Cypress.Commands.add('checkToken', () => {
+  cy.window().its('localStorage').should("have.a.property", "api-token")
+})
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
 //

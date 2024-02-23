@@ -1,6 +1,7 @@
 describe('loginSpec', () => {
   it('logs in', () => {
-    cy.visit('https://qa.koel.app')
+    cy.visit('/')
+
     cy.get("[type='email']")
       .type(Cypress.env('user'), { force: true })
       .type("{enter}");
@@ -10,5 +11,6 @@ describe('loginSpec', () => {
       .type("{enter}");
 
     cy.get("button[type='submit']").click();
+    
   })
 })
