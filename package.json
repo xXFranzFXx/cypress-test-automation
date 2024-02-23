@@ -9,6 +9,7 @@
   "author": "Franz Fernando",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.6.5"
+    "cypress": "^13.6.5",
+    "cypress-xpath": "^2.0.1"
   }
 }
