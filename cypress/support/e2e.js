@@ -36,25 +36,27 @@ export const createNewPlaylist = () => {
 }
 export const clickNewPlaylistContextMenu = () => {
     cy.isVisibleWithAttr("nav > ul > li[data-testid='playlist-context-menu-create-simple']", 'contain', 'New Playlist')
-    .click()
+    .click();
 }
 export const clickNewSmartPlaylistContextMenu = () => {
     cy.isVisibleWithAttr("nav > ul > li[data-testid='playlist-context-menu-create-smart']", 'contain', 'New Smart Playlist')
-    .click()
+    .click();
 }
 
 export const enterNewSmartPlaylistInfo = (playlist, rule) => {
-    cy.contains('New Smart Playlist')
+    cy.contains('New Smart Playlist');
         cy.get('input[name="name"]')
-            .type(`${playlist}`)
+            .type(`${playlist}`);
         cy.get('input[name="value[]"]')
-            .type(`${rule}`)
-        cy.get('button[type="submit"]').contains('Save').click()
+            .type(`${rule}`);
+        cy.get('button[type="submit"]')
+            .contains('Save')
+            .click();
 }
 export const enterPlaylistName = (playlist) => {
     cy.get("form[name='create-simple-playlist-form'] > input[name='name']")
             .type(`${playlist}`, { force: true })
-            .type("{enter}")
+            .type("{enter}");
 }
 export const contextClickDeletePlaylists = () => {
     cy.xpath('//li[@class="playlist playlist"]').each(($el) => {
@@ -62,10 +64,10 @@ export const contextClickDeletePlaylists = () => {
             .trigger('mouseover', {eventConstructor: 'MouseEvent'})
             .rightclick();
 
-        cy.contains('Delete').click()
-        cy.wrap($el).should("not.exist")
+        cy.contains('Delete').click();
+        cy.wrap($el).should("not.exist");
         
-        assertSuccessNotificationDisplayed('Deleted')
+        assertSuccessNotificationDisplayed('Deleted');
     })
 }
 export const contextClickDeleteSmartPlaylists = () => {
@@ -74,10 +76,10 @@ export const contextClickDeleteSmartPlaylists = () => {
             .trigger('mouseover', {eventConstructor: 'MouseEvent'})
             .rightclick();
 
-        cy.contains('Delete').click()
-        cy.wrap($el).should("not.exist")
+        cy.contains('Delete').click();
+        cy.wrap($el).should("not.exist");
 
-        assertSuccessNotificationDisplayed('Deleted')
+        assertSuccessNotificationDisplayed('Deleted');
     })
 }
 export const checkUserPlaylists  = () => {
@@ -89,29 +91,26 @@ cy.get('#playlists > ul')
   });
 }
 export const clickHome = () => {
-    cy.clickSideMenuItem('Home')
+    cy.clickSideMenuItem('Home');
 }
 export const clickCurrentQueue = () => {
-    cy.clickSideMenuItem('Current Queue')
+    cy.clickSideMenuItem('Current Queue');
 }
 export const clickAllSongs = () => {
-    cy.clickSideMenuItem('All Songs')
+    cy.clickSideMenuItem('All Songs');
 }
 export const clickAlbums = () => {
-    cy.clickSideMenuItem('Albums')
+    cy.clickSideMenuItem('Albums');
 }
 export const clickFavorites = () => {
-    cy.clickSideMenuItem('Favorites')
+    cy.clickSideMenuItem('Favorites');
 }
 export const clickArtists = () => {
-    cy.clickSideMenuItem('Artists')
+    cy.clickSideMenuItem('Artists');
 }
 export const clickRecentlyPlayed = () => {
-    cy.clickSideMenuItem('Recently Played')
+    cy.clickSideMenuItem('Recently Played');
 }
 export const compareUrl = (location) => {
     cy.url().should('equal', `https://qa.koel.app/#!/${location}`);
-
 }
-// Alternatively you can use CommonJS syntax:
-// require('./commands')

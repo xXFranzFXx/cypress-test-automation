@@ -11,7 +11,6 @@
 //
 // -- This is a parent command --
 
-// const cypressConfig = require("../../cypress.config");
 require("cypress-xpath");
 Cypress.Commands.add('loginWithValidCredentials', (email, password) => { 
     cy.visit('/');
@@ -28,40 +27,47 @@ Cypress.Commands.add('loginWithValidCredentials', (email, password) => {
     cy.checkToken();
 
 });
+
 Cypress.Commands.add('loginWithApi', (email, password) => {
   cy.request('POST', '/', {
     email: email,
     password: password
-  })
+  });
   cy.checkToken();
-})
+});
+
 Cypress.Commands.add('isVisibleWithAttr', (element, attribute, value) => {
   cy.get(`${element}`)
   .should('be.visible')
-  .and(`${attribute}`, value)
-})
+  .and(`${attribute}`, value);
+});
+
 Cypress.Commands.add('findElement', (locator) => {
   cy.get(`${locator}`).then(($el) => {
     return $el.length ? true : false;
-  })
-})
+  });
+});
+
 Cypress.Commands.add('findElementByXpath', (locator) => {
  cy.xpath(locator).then(($el) => {
   return $el.length ? true : false;
-})
-})
+  });
+});
+
 Cypress.Commands.add('findElements', (parentLocator, childElement) => {
-  cy.get(`${parentLocator}`).find(`${childElement}`).should('be.visible')
-})
+  cy.get(`${parentLocator}`).find(`${childElement}`).should('be.visible');
+});
+
 Cypress.Commands.add('clickSideMenuItem', (menuChoice) => {
   cy.get('a').contains(`${menuChoice}`).click();
-})
+});
+
 //
 //
 // -- This is a child command --
 Cypress.Commands.add('checkToken', () => {
   cy.window().its('localStorage').should("have.a.property", "api-token")
-})
+});
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
 //
