@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
@@ -27,10 +28,6 @@ module.exports = defineConfig({
     slowTestThreshold: 10000,
   },
   env: {
-    user:'franz.fernando+1@testpro.io',
-    password:'te$t$tudent1',
-    dbUrl: 'jdbc:mariadb://104.237.13.60:3306/dbkoel',
-    dbUser: 'dbuser11',
-    dbPassword: 'pa$$11'
+    ...process.env,
   }
 });

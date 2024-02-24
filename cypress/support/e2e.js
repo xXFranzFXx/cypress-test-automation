@@ -14,7 +14,8 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
+
 export const assertRecentlyPlayedVisibility = () => {
     cy.isVisibleWithAttr("#playlists > ul > li > a",  'contain', 'Recently')
 }
@@ -27,6 +28,7 @@ export const assertSuccessNotificationDisplayed = (playlist) => {
 export const assertDeleteSuccessMsgDisplayed = () => {
     cy.isVisibleWithAttr("div > .success.show",  'contain', 'Deleted')
 }
+//clicks the create playlist button
 export const createNewPlaylist = () => {
     cy.get("i[data-testid='sidebar-create-playlist-btn']")
     .trigger('mouseover', {eventConstructor: 'MouseEvent'})
@@ -40,6 +42,7 @@ export const clickNewSmartPlaylistContextMenu = () => {
     cy.isVisibleWithAttr("nav > ul > li[data-testid='playlist-context-menu-create-smart']", 'contain', 'New Smart Playlist')
     .click()
 }
+
 export const enterNewSmartPlaylistInfo = (playlist, rule) => {
     cy.contains('New Smart Playlist')
         cy.get('input[name="name"]')
@@ -85,9 +88,30 @@ cy.get('#playlists > ul')
     expect(item).to.have.length(itemCount);
   });
 }
+export const clickHome = () => {
+    cy.clickSideMenuItem('Home')
+}
+export const clickCurrentQueue = () => {
+    cy.clickSideMenuItem('Current Queue')
+}
 export const clickAllSongs = () => {
     cy.clickSideMenuItem('All Songs')
 }
+export const clickAlbums = () => {
+    cy.clickSideMenuItem('Albums')
+}
+export const clickFavorites = () => {
+    cy.clickSideMenuItem('Favorites')
+}
+export const clickArtists = () => {
+    cy.clickSideMenuItem('Artists')
+}
+export const clickRecentlyPlayed = () => {
+    cy.clickSideMenuItem('Recently Played')
+}
+export const compareUrl = (location) => {
+    cy.url().should('equal', `https://qa.koel.app/#!/${location}`);
 
+}
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
