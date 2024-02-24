@@ -1,6 +1,6 @@
 # cypress-test-automation
- test automation for the Koel webapp using cypress.js
-Todo: 
--revise selectors
--add more e2e tests
--add api testing
+ test automation for the Koel webapp using cypress.js<br/> 
+Todo:<br/> 
+-revise selectors<br/> 
+-add more e2e tests<br/> 
+-add api testing<br/> 
