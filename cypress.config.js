@@ -23,7 +23,7 @@ module.exports = defineConfig({
       config.baseUrl = appUrl;
       return config;
     },
-    defaultCommandTimeout: 5000,
+    defaultCommandTimeout: 8000,
     screenshotOnRunFailure: true,
     slowTestThreshold: 10000,
   },

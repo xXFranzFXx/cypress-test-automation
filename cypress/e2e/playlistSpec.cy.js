@@ -9,7 +9,7 @@ describe('User Playlist Tests', () => {
         assertPlaylistsSMVisibility();
     });
 
-    it('creates a new playlist', () => {
+    it('create a new playlist', () => {
         const playlist = Cypress.env('playlist')
         createNewPlaylist();
         clickNewPlaylistContextMenu();
@@ -17,7 +17,7 @@ describe('User Playlist Tests', () => {
         assertSuccessNotificationDisplayed(playlist);
     });
 
-    it('creates a new smart playlist', () => {
+    it('create a new smart playlist', () => {
         const smartPlaylist = Cypress.env('smartPlaylist')
         const smartPlaylistRule = Cypress.env('smartPlaylistRule')
         createNewPlaylist();
@@ -26,7 +26,7 @@ describe('User Playlist Tests', () => {
         assertSuccessNotificationDisplayed(`${smartPlaylist}`)
     });
 
-    it('adds a song to a playlist', () => {
+    it('add a song to a playlist', () => {
         const playlistWithSong = Cypress.env('playlistWithSong')
         clickAllSongs();
         cy.get('table > tr').find('td')
@@ -39,12 +39,12 @@ describe('User Playlist Tests', () => {
         });
     });
 
-    it('deletes all regular playlists', () => {
+    it('delete all regular playlists', () => {
        contextClickDeletePlaylists();
        checkUserPlaylists();
     });
 
-    it('deletes all smart playlists', () => {
+    it('delete all smart playlists', () => {
         contextClickDeleteSmartPlaylists();
         checkUserPlaylists();
     });

@@ -1,5 +1,5 @@
-describe('loginSpec', () => {
-  it('logs in', () => {
+describe('Log in tests', () => {
+  it('successfully log the user in', () => {
     cy.visit('/')
 
     cy.get("[type='email']")

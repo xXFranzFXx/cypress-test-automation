@@ -114,3 +114,10 @@ export const clickRecentlyPlayed = () => {
 export const compareUrl = (location) => {
     cy.url().should('equal', `https://qa.koel.app/#!/${location}`);
 }
+export const verifySearchInHeader = (word) => {
+    cy.get('#searchForm > input').type(word);
+    cy.get('h1').should('contain', `Search Results for ${word}`);
+}
+export const invokeSearchByKeybd = () => {
+    cy.get('body').type('f')
+}
