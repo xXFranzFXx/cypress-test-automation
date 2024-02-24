@@ -53,6 +53,9 @@ Cypress.Commands.add('findElementByXpath', (locator) => {
 Cypress.Commands.add('findElements', (parentLocator, childElement) => {
   cy.get(`${parentLocator}`).find(`${childElement}`).should('be.visible')
 })
+Cypress.Commands.add('clickSideMenuItem', (menuChoice) => {
+  cy.get('a').contains(`${menuChoice}`).click();
+})
 //
 //
 // -- This is a child command --
