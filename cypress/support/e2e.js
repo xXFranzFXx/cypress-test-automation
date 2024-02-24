@@ -30,16 +30,16 @@ export const assertDeleteSuccessMsgDisplayed = () => {
 }
 //clicks the create playlist button
 export const createNewPlaylist = () => {
-    cy.get("i[data-testid='sidebar-create-playlist-btn']")
+    cy.get("[data-testid='sidebar-create-playlist-btn']")
     .trigger('mouseover', {eventConstructor: 'MouseEvent'})
     .click();
 }
 export const clickNewPlaylistContextMenu = () => {
-    cy.isVisibleWithAttr("nav > ul > li[data-testid='playlist-context-menu-create-simple']", 'contain', 'New Playlist')
+    cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-simple']", 'contain', 'New Playlist')
     .click();
 }
 export const clickNewSmartPlaylistContextMenu = () => {
-    cy.isVisibleWithAttr("nav > ul > li[data-testid='playlist-context-menu-create-smart']", 'contain', 'New Smart Playlist')
+    cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-smart']", 'contain', 'New Smart Playlist')
     .click();
 }
 
