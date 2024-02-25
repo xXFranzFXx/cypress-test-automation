@@ -12,6 +12,11 @@
 // -- This is a parent command --
 //commands.js
 require("cypress-xpath");
+import mariadb from 'cypress-maria-db';
+mariadb.loadDBCommands();
+require('cy-verify-downloads').addCustomCommand();
+
+
 Cypress.Commands.add('loginWithValidCredentials', (email, password) => { 
     cy.visit('/');
 

@@ -15,8 +15,6 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
-require('cy-verify-downloads').addCustomCommand();
-// require('cypress-maria-db').loadDBCommands();
 
 export const assertRecentlyPlayedVisibility = () => {
     cy.isVisibleWithAttr("#playlists > ul > li > a",  'contain', 'Recently')

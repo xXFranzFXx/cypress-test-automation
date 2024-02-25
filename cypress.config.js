@@ -27,7 +27,7 @@ module.exports = defineConfig({
           })
         }
       })
-      
+
       on('task', {
         countFiles(folderName) {
           return new Promise((resolve, reject) => {
@@ -53,8 +53,8 @@ module.exports = defineConfig({
           });
         }
       });
-      // tasks = mariadb.loadDBPlugin(config.env.db);
-      // on('task', tasks);
+      const tasks = mariadb.loadDBPlugin(config.env.db);
+      on('task', tasks);
 
       const testenv = process.env.TEST_ENV || config.env.testenv || 'qa.koel.app';
       
@@ -91,5 +91,11 @@ module.exports = defineConfig({
   },
   env: {
     ...process.env,
+    "db": {
+      "host": process.env.dbUrl,
+      "user": process.env.dbUser,
+      "password": process.env.dbPassword,
+      "connectionLimit": 5
+  }
   }
 });
