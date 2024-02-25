@@ -39,4 +39,4 @@ describe('Side Menu Tests', () => {
     clickRecentlyPlayed();
     compareUrl('recently-played');
   });
-})
+});

@@ -14,11 +14,25 @@ describe('Search feature functionality tests', () => {
     compareUrl('search');
   });
 
+  it('clear the search field by using the cancel button', () => {
+    verifySearchInHeader(word);
+    compareUrl('search');
+    cy.get('#searchForm > input').then(
+      ($element) => {
+        const width = $element.width();
+        const height = $element.height();
+        const center = width/2;
+        const xOffset = center - 10;
+        cy.get($element)
+          .click(xOffset, -1, {force: true})
+          .should('be.empty');
+    });
+});
+
   it('invoke search feature by pressing "F" key', () => {
       invokeSearchByKeybd();
       verifySearchInHeader(word);
       compareUrl('search');
-    
   });
   
   it('clears the previous search in the search bar using keyboard combination', () => {
@@ -30,6 +44,6 @@ describe('Search feature functionality tests', () => {
             .type(word)
             .type('{ctrl+shift+a}{backspace}')
             .should('be.empty');
-      });
-  });
+        });
+    });
 });

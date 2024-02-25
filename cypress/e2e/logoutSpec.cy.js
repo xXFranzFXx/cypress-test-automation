@@ -4,8 +4,9 @@ describe('Logout functionality tests', () => {
   });
 
   it('log the user out after logging in', () => {
-    cy.get('[data-testid="btn-logout"] > i').should('be.visible').click()
-    cy.contains('Registration')
+    cy.get('[data-testid="btn-logout"] > i')
+      .should('be.visible')
+      .click();
+    cy.contains('Registration');
   });
-
-})
+});

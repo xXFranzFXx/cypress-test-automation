@@ -10,7 +10,7 @@
 //
 //
 // -- This is a parent command --
-
+//commands.js
 require("cypress-xpath");
 Cypress.Commands.add('loginWithValidCredentials', (email, password) => { 
     cy.visit('/');
@@ -28,12 +28,20 @@ Cypress.Commands.add('loginWithValidCredentials', (email, password) => {
 
 });
 
-Cypress.Commands.add('loginWithApi', (email, password) => {
-  cy.request('POST', '/', {
-    email: email,
-    password: password
-  });
-  cy.checkToken();
+Cypress.Commands.add('loginWithApi', () => {
+  cy.request('POST', 'https://qa.koel.app/api/me', {
+    email: Cypress.env('email'),
+    password: Cypress.env('password')
+  }).then(
+    (response) => {
+      expect(response.body).to.have.property('token')
+      Cypress.env('token', response.body.token)
+      cy.fixture('token.json').then((data) => {
+        data.token = response.body.token
+      });
+
+    }
+  )
 });
 
 Cypress.Commands.add('isVisibleWithAttr', (element, attribute, value) => {
@@ -61,6 +69,18 @@ Cypress.Commands.add('findElements', (parentLocator, childElement) => {
 Cypress.Commands.add('clickSideMenuItem', (menuChoice) => {
   cy.get('a').contains(`${menuChoice}`).click();
 });
+
+Cypress.Commands.add('verifyFileDownload', (fileExt) => {
+  cy.verifyDownload(`${fileExt}`, {contains: true, timeout: 20000, interval: 10000});
+      cy.task('countFiles', 'cypress/downloads').then((count) => {
+        assert.isNotNull(count)
+      })
+  })
+
+Cypress.Commands.add('deleteDownloadsFolder', () => {
+  const downloadsFolder = Cypress.config('downloadsFolder');
+  cy.task('deleteFolder', downloadsFolder);
+})
 
 //
 //
