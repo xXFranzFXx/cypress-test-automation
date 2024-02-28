@@ -3,9 +3,6 @@ import { assertRecentlyPlayedVisibility, assertPlaylistsSMVisibility, verifySear
 describe('Songs tests', () => {
   beforeEach(() => {
     cy.loginWithValidCredentials(Cypress.env('user'), Cypress.env('password'))
-    assertRecentlyPlayedVisibility();
-    assertPlaylistsSMVisibility();
-    
     });
 
   it('download a song and verify the file downloaded', () => {

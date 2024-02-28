@@ -12,8 +12,7 @@
 // -- This is a parent command --
 //commands.js
 require("cypress-xpath");
-import mariadb from 'cypress-maria-db';
-mariadb.loadDBCommands();
+
 require('cy-verify-downloads').addCustomCommand();
 
 
@@ -31,6 +30,9 @@ Cypress.Commands.add('loginWithValidCredentials', (email, password) => {
     cy.get("button[type='submit']").click();
     cy.checkToken();
 
+    cy.isVisibleWithAttr("#playlists > ul > li > a",  'contain', 'Recently')
+    cy.isVisibleWithAttr("#playlists > h1",  'contain', 'Playlists')
+    cy.get('img.avatar').should('be.visible')
 });
 
 Cypress.Commands.add('loginWithApi', () => {
@@ -81,7 +83,20 @@ Cypress.Commands.add('verifyFileDownload', (fileExt) => {
         assert.isNotNull(count)
       })
   })
+Cypress.Commands.add('connectDb', () => {
+  const pool = mariadb.createPool(Cypress.env('db'));
+  async function asyncFunction() {
+  let conn;
+  try {
+  conn = await pool.getConnection();
+  } catch (err) {
+  throw err;
+  } finally {
+  if (conn) return conn.end();
+  }
+}
 
+})
 Cypress.Commands.add('deleteDownloadsFolder', () => {
   const downloadsFolder = Cypress.config('downloadsFolder');
   cy.task('deleteFolder', downloadsFolder);

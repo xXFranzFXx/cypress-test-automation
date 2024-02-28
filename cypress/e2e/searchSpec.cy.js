@@ -5,10 +5,10 @@ const word = Cypress.env('searchWord');
 describe('Search feature functionality tests', () => {
   beforeEach(() => {
     cy.loginWithValidCredentials(Cypress.env('user'), Cypress.env('password'));
-    assertRecentlyPlayedVisibility();
-    assertPlaylistsSMVisibility();
+    // assertRecentlyPlayedVisibility();
+    // assertPlaylistsSMVisibility();
   });
-
+  
   it('search for a song using the search bar and verify information is displayed in the search results', () => {
     verifySearchInHeader(word);
     compareUrl('search');

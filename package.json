@@ -4,7 +4,8 @@
   "description": "Test automation using cypress",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "runner": "cypress open"
   },
   "author": "Franz Fernando",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "cy-verify-downloads": "^0.2.3",
     "cypress": "^13.6.5",
     "cypress-maria-db": "^1.0.3",
+    "cypress-mochawesome-reporter": "^3.8.2",
     "cypress-xpath": "^2.0.1",
     "dotenv": "^16.4.5"
   }

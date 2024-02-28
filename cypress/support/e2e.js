@@ -15,6 +15,9 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands';
+import 'cypress-mochawesome-reporter/register';
+import mariadb from 'cypress-maria-db';
+mariadb.loadDBCommands();
 
 export const assertRecentlyPlayedVisibility = () => {
     cy.isVisibleWithAttr("#playlists > ul > li > a",  'contain', 'Recently')

@@ -20,8 +20,6 @@ describe('User Playlist Tests', () => {
     beforeEach(() => {
         cy.viewport(1280, 720);
         cy.loginWithValidCredentials(Cypress.env('user'), Cypress.env('password'));
-        assertRecentlyPlayedVisibility();
-        assertPlaylistsSMVisibility();
     });
 
     it('create a new playlist', () => {

@@ -8,10 +8,29 @@ const { fs, rmdir } = require('fs');
 
 
 module.exports = defineConfig({
+  reporter: "cypress-mochawesome-reporter",
+  retries: 1,
+  reporterOptions: {
+    charts: true,
+    reportPageTitle: 'report',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+  },
+  env: {
+    ...process.env,
+    "db": {
+      "host": `${process.env.dbUrl}`,
+      "user": `${process.env.dbUser}`,
+      "password": `${process.env.dbPassword}`,
+      "connectionLimit": 5
+  },
+  },
   e2e: {
     setupNodeEvents(on, config) {
-
+      require('cypress-mochawesome-reporter/plugin')(on);
       on('task', verifyDownloadTasks);
+      on('task', mariadb.loadDBPlugin(config.env.db));
 
       on('task', {
         deleteFolder(folderName) {
@@ -53,9 +72,6 @@ module.exports = defineConfig({
           });
         }
       });
-      const tasks = mariadb.loadDBPlugin(config.env.db);
-      on('task', tasks);
-
       const testenv = process.env.TEST_ENV || config.env.testenv || 'qa.koel.app';
       
       function loadHost(testenv) {
@@ -81,21 +97,14 @@ module.exports = defineConfig({
       return config;
 
     },
-
+    
     defaultCommandTimeout: 10000,
     screenshotOnRunFailure: true,
-    screenshotsFolder: 'cypress/screenshots',
+    screenshotsFolder: 'cypress/reports/screenshots',
     slowTestThreshold: 10000,
     downloadsFolder: 'cypress/downloads',
     trashAssetsBeforeRuns: true,
+    includeShadowDom: true
   },
-  env: {
-    ...process.env,
-    "db": {
-      "host": process.env.dbUrl,
-      "user": process.env.dbUser,
-      "password": process.env.dbPassword,
-      "connectionLimit": 5
-  }
-  }
+  
 });
