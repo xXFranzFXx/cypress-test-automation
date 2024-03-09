@@ -13,6 +13,7 @@ class homePage {
         },
         createNewPlBtn : () =>  cy.get("[data-testid='sidebar-create-playlist-btn']"),
         newPlContextMenuChoice : () => cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-simple']", 'contain', 'New Playlist'),
+        newSmartPlContextMenuChoice : () => cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-smart']", 'contain', 'New Smart Playlist'),
         playlistNameInput : () => cy.get("form[name='create-simple-playlist-form'] > input[name='name']"),
         playlist: () => Cypress.env('playlist'),
     }
@@ -26,6 +27,10 @@ class homePage {
     clickNewPlCntxt() {
         this.elements.newPlContextMenuChoice().click();
     }
+    clickNewSmartPlCntxt() {
+        this.elements.newSmartPlContextMenuChoice().click();
+    }
+    
     enterPlName() {
         this.elements.playlistNameInput()
          .type(`${this.elements.playlist()}`, { force: true })

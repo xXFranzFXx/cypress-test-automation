@@ -31,23 +31,23 @@ export const assertSuccessNotificationDisplayed = (playlist) => {
 export const assertDeleteSuccessMsgDisplayed = () => {
     cy.isVisibleWithAttr("div > .success.show",  'contain', 'Deleted')
 }
-//clicks the create playlist button
-export const createNewPlaylist = () => {
-    cy.get("[data-testid='sidebar-create-playlist-btn']")
-    .trigger('mouseover', {eventConstructor: 'MouseEvent'})
-    .click();
-}
-export const clickNewPlaylistContextMenu = () => {
-    cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-simple']", 'contain', 'New Playlist')
-    .click();
-}
-export const clickNewSmartPlaylistContextMenu = () => {
-    cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-smart']", 'contain', 'New Smart Playlist')
-    .click();
-}
+// //clicks the create playlist button
+// export const createNewPlaylist = () => {
+//     cy.get("[data-testid='sidebar-create-playlist-btn']")
+//     .trigger('mouseover', {eventConstructor: 'MouseEvent'})
+//     .click();
+// }
+// export const clickNewPlaylistContextMenu = () => {
+//     cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-simple']", 'contain', 'New Playlist')
+//     .click();
+// }
+// export const clickNewSmartPlaylistContextMenu = () => {
+//     cy.isVisibleWithAttr("[data-testid='playlist-context-menu-create-smart']", 'contain', 'New Smart Playlist')
+//     .click();
+// }
 
 export const enterNewSmartPlaylistInfo = (playlist, rule) => {
-    cy.contains('New Smart Playlist');
+    cy.contains('New Smart Playlist')
         cy.get('input[name="name"]')
             .type(`${playlist}`);
         cy.get('input[name="value[]"]')
@@ -56,11 +56,11 @@ export const enterNewSmartPlaylistInfo = (playlist, rule) => {
             .contains('Save')
             .click();
 }
-export const enterPlaylistName = (playlist) => {
-    cy.get("form[name='create-simple-playlist-form'] > input[name='name']")
-            .type(`${playlist}`, { force: true })
-            .type("{enter}");
-}
+// export const enterPlaylistName = (playlist) => {
+//     cy.get("form[name='create-simple-playlist-form'] > input[name='name']")
+//             .type(`${playlist}`, { force: true })
+//             .type("{enter}");
+// }
 export const contextClickDeletePlaylists = () => {
     cy.xpath('//li[@class="playlist playlist"]').each(($el) => {
         cy.wrap($el)
