@@ -1,42 +1,42 @@
-import { clickHome, clickRecentlyPlayed, clickAlbums, clickAllSongs, clickArtists, clickCurrentQueue, clickFavorites, compareUrl } from "../support/e2e";
-
+import { compareUrl } from "../support/e2e";
+import homePage from '../pages/homePage'
 describe('Side Menu Tests', () => {
   beforeEach(() => {
     cy.loginWithValidCredentials(Cypress.env('user'), Cypress.env('password'));
   });
 
   it('clicks on Home navigation link', () => {
-    clickHome();
+    homePage.clickHome();
     compareUrl('home');
   });
 
   it('clicks on the Current Queue navigation link', () => {
-    clickCurrentQueue();
+    homePage.clickCurrentQueue();
     compareUrl('queue');
   });
 
   it('clicks on the All Songs navigation link', () => {
-    clickAllSongs();
+    homePage.clickAllSongs();
     compareUrl('songs');
   });
 
   it('clicks on the Albums navigation link', () => {
-    clickAlbums();
+    homePage.clickAlbums();
     compareUrl('albums');
   });
 
   it('clicks on the Artists navigation link', () => {
-    clickArtists();
+    homePage.clickArtists();
     compareUrl('artists');
   });
 
   it('clicks on the Favorites navigation link', () => {
-    clickFavorites();
+    homePage.clickFavorites();
     compareUrl('favorites');
   });
 
   it('clicks on the Recently Played navigation link', () => {
-    clickRecentlyPlayed();
+    homePage.clickRecentlyPlayed();
     compareUrl('recently-played');
   });
 });

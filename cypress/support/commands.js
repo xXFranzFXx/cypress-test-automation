@@ -12,24 +12,14 @@
 // -- This is a parent command --
 //commands.js
 require("cypress-xpath");
-
 require('cy-verify-downloads').addCustomCommand();
+import loginPage from "../pages/loginPage";
 
 
 Cypress.Commands.add('loginWithValidCredentials', (email, password) => { 
     cy.visit('/');
-
-    cy.get("[type='email']")
-      .type(email, { force: true })
-      .type("{enter}");
-
-    cy.get("[type='password']")
-      .type(password, { force: true })
-      .type("{enter}");
-
-    cy.get("button[type='submit']").click();
+    loginPage.login(email, password);
     cy.checkToken();
-
     cy.isVisibleWithAttr("#playlists > ul > li > a",  'contain', 'Recently')
     cy.isVisibleWithAttr("#playlists > h1",  'contain', 'Playlists')
     cy.get('img.avatar').should('be.visible')

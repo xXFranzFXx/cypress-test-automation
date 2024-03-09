@@ -93,27 +93,7 @@ cy.get('#playlists > ul')
     expect(item).to.have.length(itemCount);
   });
 }
-export const clickHome = () => {
-    cy.clickSideMenuItem('Home');
-}
-export const clickCurrentQueue = () => {
-    cy.clickSideMenuItem('Current Queue');
-}
-export const clickAllSongs = () => {
-    cy.clickSideMenuItem('All Songs');
-}
-export const clickAlbums = () => {
-    cy.clickSideMenuItem('Albums');
-}
-export const clickFavorites = () => {
-    cy.clickSideMenuItem('Favorites');
-}
-export const clickArtists = () => {
-    cy.clickSideMenuItem('Artists');
-}
-export const clickRecentlyPlayed = () => {
-    cy.clickSideMenuItem('Recently Played');
-}
+
 export const compareUrl = (location) => {
     cy.url().should('equal', `https://qa.koel.app/#!/${location}`);
 }
@@ -124,3 +104,7 @@ export const verifySearchInHeader = (word) => {
 export const invokeSearchByKeybd = () => {
     cy.get('body').type('f')
 }
+export const  clickMusicPanel = (menuChoice) => {
+    cy.clickSideMenuItem(menuChoice)
+}
+
