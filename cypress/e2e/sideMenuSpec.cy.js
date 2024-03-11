@@ -5,6 +5,7 @@ describe('Side Menu Tests', () => {
     cy.loginWithValidCredentials(Cypress.env('user'), Cypress.env('password'));
   });
 
+
   it('clicks on Home navigation link', () => {
     homePage.clickHome();
     compareUrl('home');
