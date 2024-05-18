@@ -15,7 +15,6 @@ require("cypress-xpath");
 
 require('cy-verify-downloads').addCustomCommand();
 
-
 Cypress.Commands.add('loginWithValidCredentials', (email, password) => { 
     cy.visit('/');
 
