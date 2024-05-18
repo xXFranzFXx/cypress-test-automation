@@ -1,5 +1,6 @@
 import { assertRecentlyPlayedVisibility, assertPlaylistsSMVisibility, verifySearchInHeader, compareUrl, invokeSearchByKeybd, clickAllSongs } from "../support/e2e";
 import fs from 'fs';
+
 describe('Songs tests', () => {
   beforeEach(() => {
     cy.loginWithValidCredentials(Cypress.env('user'), Cypress.env('password'))
