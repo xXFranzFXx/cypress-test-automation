@@ -1,6 +1,4 @@
 const { 
-    assertRecentlyPlayedVisibility, 
-    assertPlaylistsSMVisibility,
     assertSuccessNotificationDisplayed, 
     clickNewPlaylistContextMenu, 
     enterPlaylistName, 
