@@ -4,9 +4,6 @@ const { verifyDownloadTasks } = require('cy-verify-downloads');
 const mariadb = require('cypress-maria-db');
 const { fs, rmdir } = require('fs');
 
-
-
-
 module.exports = defineConfig({
   reporter: "cypress-mochawesome-reporter",
   retries: 1,
