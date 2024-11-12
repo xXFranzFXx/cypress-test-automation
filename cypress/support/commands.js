@@ -82,17 +82,17 @@ Cypress.Commands.add('verifyFileDownload', (fileExt) => {
         assert.isNotNull(count);
       })
   });
-  
+
 Cypress.Commands.add('connectDb', () => {
   const pool = mariadb.createPool(Cypress.env('db'));
   async function asyncFunction() {
   let conn;
   try {
-  conn = await pool.getConnection();
+    conn = await pool.getConnection();
   } catch (err) {
-  throw err;
+    throw err;
   } finally {
-  if (conn) return conn.end();
+    if (conn) return conn.end();
   }
 }
 });
