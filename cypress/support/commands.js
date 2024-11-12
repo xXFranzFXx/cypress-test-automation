@@ -29,9 +29,9 @@ Cypress.Commands.add('loginWithValidCredentials', (email, password) => {
     cy.get("button[type='submit']").click();
     cy.checkToken();
 
-    cy.isVisibleWithAttr("#playlists > ul > li > a",  'contain', 'Recently')
-    cy.isVisibleWithAttr("#playlists > h1",  'contain', 'Playlists')
-    cy.get('img.avatar').should('be.visible')
+    cy.isVisibleWithAttr("#playlists > ul > li > a",  'contain', 'Recently');
+    cy.isVisibleWithAttr("#playlists > h1",  'contain', 'Playlists');
+    cy.get('img.avatar').should('be.visible');
 });
 
 Cypress.Commands.add('loginWithApi', () => {
@@ -43,7 +43,7 @@ Cypress.Commands.add('loginWithApi', () => {
       expect(response.body).to.have.property('token')
       Cypress.env('token', response.body.token)
       cy.fixture('token.json').then((data) => {
-        data.token = response.body.token
+        data.token = response.body.token;
       });
 
     }
@@ -79,7 +79,7 @@ Cypress.Commands.add('clickSideMenuItem', (menuChoice) => {
 Cypress.Commands.add('verifyFileDownload', (fileExt) => {
   cy.verifyDownload(`${fileExt}`, {contains: true, timeout: 20000, interval: 10000});
       cy.task('countFiles', 'cypress/downloads').then((count) => {
-        assert.isNotNull(count)
+        assert.isNotNull(count);
       })
   })
 Cypress.Commands.add('connectDb', () => {
@@ -101,8 +101,8 @@ Cypress.Commands.add('deleteDownloadsFolder', () => {
   cy.task('deleteFolder', downloadsFolder);
 })
 
-//
-//
+
+
 // -- This is a child command --
 Cypress.Commands.add('checkToken', () => {
   cy.window().its('localStorage').should("have.a.property", "api-token")
