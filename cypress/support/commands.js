@@ -81,7 +81,8 @@ Cypress.Commands.add('verifyFileDownload', (fileExt) => {
       cy.task('countFiles', 'cypress/downloads').then((count) => {
         assert.isNotNull(count);
       })
-  })
+  });
+  
 Cypress.Commands.add('connectDb', () => {
   const pool = mariadb.createPool(Cypress.env('db'));
   async function asyncFunction() {
@@ -94,12 +95,12 @@ Cypress.Commands.add('connectDb', () => {
   if (conn) return conn.end();
   }
 }
+});
 
-})
 Cypress.Commands.add('deleteDownloadsFolder', () => {
   const downloadsFolder = Cypress.config('downloadsFolder');
   cy.task('deleteFolder', downloadsFolder);
-})
+});
 
 
 
